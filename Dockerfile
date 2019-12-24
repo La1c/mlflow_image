@@ -6,6 +6,10 @@ RUN pip install mlflow
 
 RUN mkdir /mlflow/
 
+ENV DEFAULT_ARTIFACT_ROOT ./mlruns
+ENV DEFAULT_HOST 0.0.0.0
+
 CMD mlflow server \
     --backend-store-uri /mlflow \
-    --host 0.0.0.0
+    --default-artifact-root $DEFAULT_ARTIFACT_ROOT \ 
+    --host $DEFAULT_HOST
